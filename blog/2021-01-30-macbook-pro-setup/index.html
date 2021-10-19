@@ -1,0 +1,189 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,minimum-scale=1,maximum-scale=1">
+<link href=/css/fonts.css rel=stylesheet type=text/css>
+<title>Macbook Pro setup</title>
+<link rel=stylesheet href=/css/hugo-octopress.css>
+<link rel=stylesheet href=/css/fork-awesome.min.css>
+<link href=https://github.com/favicon.png rel=icon>
+<meta name=description content>
+<meta name=keywords content>
+<meta name=author content="Shaswat Gupta">
+<meta name=generator content="Hugo 0.88.1">
+</head>
+<body>
+<header role=banner>
+<hgroup>
+<h1><a href=https://github.com/>Citadel</a></h1>
+<h2>An invaluable library of reference.</h2>
+</hgroup></header>
+<nav role=navigation>
+<fieldset class=mobile-nav>
+<select onchange="location=this.value"><option value>Navigate…</option></select>
+</fieldset>
+<ul class=main-navigation>
+</ul>
+<ul class=subscription>
+<a href=https://github.com/index.xml target=_blank type=application/rss+xml title=RSS rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+</ul>
+<form action="https://www.google.com/search?q=site%3Ashaswatgupta.com" method=get target=_blank rel="noopener noreferrer">
+<fieldset role=search>
+<input class=search type=text name=q results=0 placeholder=Search>
+<input type=hidden name=q value=site:https://github.com/>
+</fieldset>
+</form>
+</nav>
+<div id=main>
+<div id=content>
+<div>
+<article class=hentry role=article>
+<header>
+<p class=meta>Jan 30, 2021
+- 2 minute read
+- <a class=label href=https://github.com/categories/sre/>SRE </a><a class=label href=https://github.com/categories/macbook/>MACBOOK </a>
+</p>
+<h1 class=entry-title>
+Macbook Pro setup
+</h1>
+</header>
+<div class=entry-content>
+<p>Last year around march i lost by Macbook to water.
+Here I am back again setting up my Macbook Pro 2019 model.</p>
+<ol>
+<li>
+<p>Guide to follow for first time Macbook setup:
+Open:
+<a href=https://sourabhbajaj.com/mac-setup/ target=_blank rel=noopener>https://sourabhbajaj.com/mac-setup/</a> on safari.</p>
+</li>
+<li>
+<p>Install xcode and homebrew</p>
+</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>sudo xcode-select --install
+/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)”
+</code></pre><ol start=3>
+<li>Some of tools i use on day to day basis.</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew install lastpass-cli vim git wget telnet stormssh tmuxinator telegram-cli go scala sbt openjdk@11 wireguard-tools wireguard-go gh hugo kubectx kube-ps1 helm nmap ipcalc jq youtube-dl ffmpeg luarocks
+</code></pre><ol start=4>
+<li>Installations with cask.</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew install --cask android-file-transfer appcleaner caffeine cheatsheet docker doubletwist dropbox google-chrome flux rectangle transmission lastpass microsoft-office intellij-idea google-backup-and-sync iterm2 flock telegram tunnelblick authy hammerspoon lens bitwarden obs \mysql qemu libvirt
+</code></pre><ol start=5>
+<li>Font installation</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew tap homebrew/cask-fonts &amp;&amp; brew install --cask font-source-code-pro
+</code></pre><ol start=6>
+<li>Hashicorp tools installation</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew tap hashicorp/tap
+brew install hashicorp/tap/vault &amp;&amp; brew upgrade hashicorp/tap/vault
+brew install hashicorp-boundary-desktop
+brew install hashicorp/tap/boundary
+brew install consul
+brew cask install vagrant
+brew cask install vagrant-manager
+vagrant plugin install vagrant-libvirt
+</code></pre><ol start=7>
+<li>Visual Studio Code installation and customizations.
+Use the following link to configure VS Code.
+<a href=https://sourabhbajaj.com/mac-setup/VisualStudioCode/ target=_blank rel=noopener>https://sourabhbajaj.com/mac-setup/VisualStudioCode/</a></li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew install --cask visual-studio-code
+</code></pre><ol start=8>
+<li>Appstore installations</li>
+</ol>
+<ul>
+<li>Wireguard.</li>
+<li>Pocket.</li>
+<li>Microsoft Remote Desktop.</li>
+</ul>
+<ol start=9>
+<li>Dotfiles requirements.</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew install fzf
+$(brew --prefix)/opt/fzf/install
+brew install diff-so-fancy
+</code></pre><ol start=10>
+<li>Dotfiles setup.
+My dotfiles are fork of
+<a href=https://github.com/caarlos0/dotfiles target=_blank rel=noopener>https://github.com/caarlos0/dotfiles</a> because dotfiles are meant to be forked.
+<a href=https://carlosbecker.com/posts/dotfiles-are-meant-to-be-forked target=_blank rel=noopener>https://carlosbecker.com/posts/dotfiles-are-meant-to-be-forked</a></li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>cd ~
+git clone https://github.com/shaswatgupta/.dotfiles
+</code></pre><p>Post cloning follow the instructions on repo.</p>
+<ol start=11>
+<li>Completion setup in iterm2.</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>brew search completion
+brew install bash-completion brew-cask-completion docker-completion vagrant-completion bash-completion docker-compose-completion gradle-completion launchctl-completion packer-completion ruby-completion stormssh-completion docker-machine-completion maven-completion pip-completion tmuxinator-completion
+</code></pre><ol start=12>
+<li>Cloud Providers cli setups.</li>
+</ol>
+<pre tabindex=0><code class=language-$xslt data-lang=$xslt>GCP: https://cloud.google.com/sdk/docs/quickstart
+AWS: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html
+</code></pre>
+</div>
+<footer>
+<p class=meta>
+<span class="byline author vcard">Posted by <span class=fn>Shaswat Gupta</span></span>
+<time>Jan 30, 2021</time>
+</span>
+</p>
+<p class=meta>
+<a class="basic-alignment left" href=https://github.com/shaswatgupta/tech/blog/2021-01-30-windows-10-laptop-setup-with-wsl-2.0./ title="Windows 10 Laptop setup with WSL 2.0.">Windows 10 Laptop setup with WSL 2.0.</a>
+</p>
+</footer>
+</article>
+</div>
+<aside class="sidebar thirds">
+<section class="first odd">
+<h1>Who am I</h1>
+<p>
+I am Shaswat, a Senior Site Reliability Engineer at <a href=https://careers.media.net/system-operations/site-reliability-engineer/>media.net</a>.
+I write about system design , reverse engineering,
+Go, automation, and (obviously) SRE.
+Click on <a href=/about/>About Me!</a> to know more.
+</p>
+</section>
+<ul class=sidebar-nav>
+<li class=sidebar-nav-item>
+<a target=_blank rel="noopener noreferrer" href=https://github.com/shaswatgupta/ title=https://github.com/shaswatgupta/><i class="fa fa-github fa-3x"></i></a>
+<a target=_blank rel="noopener noreferrer" href=https://twitter.com/shaswat770/ title=https://twitter.com/shaswat770/><i class="fa fa-twitter fa-3x"></i></a>
+</li>
+</ul>
+<section class=odd>
+<h1>Sidebar Links</h1>
+<li>
+<a href=https://github.com/shaswatgupta/tech/about title="About page">About page</a>
+</li>
+<li>
+<a href=https://github.com/shaswatgupta/tech/categories/sre/ title=SRE>SRE</a>
+</li>
+<li>
+<a href=https://github.com/shaswatgupta/tech/categories/windows/ title=Windows>Windows</a>
+</li>
+</section>
+<section class=even>
+<h1>Recent Posts</h1>
+<ul id=recent_posts>
+<li class=post>
+<a href=/shaswatgupta/tech/blog/2021-01-30-macbook-pro-setup/>Macbook Pro setup</a>
+</li>
+<li class=post>
+<a href=/shaswatgupta/tech/blog/2021-01-30-windows-10-laptop-setup-with-wsl-2.0./>Windows 10 Laptop setup with WSL 2.0.</a>
+</li>
+</ul>
+</section>
+</aside>
+</div>
+</div>
+<footer role=contentinfo>
+<p>Copyright &copy; 2021 Shaswat Gupta - <a href=https://github.com/license/>License</a> -
+<span class=credit>Powered by <a target=_blank href=https://gohugo.io rel="noopener noreferrer">Hugo</a> and <a target=_blank href=https://github.com/parsiya/hugo-octopress/ rel="noopener noreferrer">Hugo-Octopress</a> theme.
+</p>
+</footer>
+</body>
+</html>

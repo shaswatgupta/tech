@@ -1,0 +1,230 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,minimum-scale=1,maximum-scale=1">
+<link href=/css/fonts.css rel=stylesheet type=text/css>
+<title>Windows 10 Laptop setup with WSL 2.0.</title>
+<link rel=stylesheet href=/css/hugo-octopress.css>
+<link rel=stylesheet href=/css/fork-awesome.min.css>
+<link href=https://github.com/favicon.png rel=icon>
+<meta name=description content>
+<meta name=keywords content>
+<meta name=author content="Shaswat Gupta">
+<meta name=generator content="Hugo 0.88.1">
+</head>
+<body>
+<header role=banner>
+<hgroup>
+<h1><a href=https://github.com/>Citadel</a></h1>
+<h2>An invaluable library of reference.</h2>
+</hgroup></header>
+<nav role=navigation>
+<fieldset class=mobile-nav>
+<select onchange="location=this.value"><option value>Navigate…</option></select>
+</fieldset>
+<ul class=main-navigation>
+</ul>
+<ul class=subscription>
+<a href=https://github.com/index.xml target=_blank type=application/rss+xml title=RSS rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+</ul>
+<form action="https://www.google.com/search?q=site%3Ashaswatgupta.com" method=get target=_blank rel="noopener noreferrer">
+<fieldset role=search>
+<input class=search type=text name=q results=0 placeholder=Search>
+<input type=hidden name=q value=site:https://github.com/>
+</fieldset>
+</form>
+</nav>
+<div id=main>
+<div id=content>
+<div>
+<article class=hentry role=article>
+<header>
+<p class=meta>Jan 30, 2021
+- 2 minute read
+- <a class=label href=https://github.com/categories/sre/>SRE </a><a class=label href=https://github.com/categories/windows/>Windows </a><a class=label href=https://github.com/categories/linux/>Linux </a>
+</p>
+<h1 class=entry-title>
+Windows 10 Laptop setup with WSL 2.0.
+</h1>
+</header>
+<div class=entry-content>
+<p>Couple of days back i lost my Macbook to water and here i am shifting to windows in middle of a national wide lockdown. (Future me should remember this COVID19 lockdown of 2020)<br>
+I personally prefer Linux based machines but in middle of lockdown this is the best i can arrange to continue my office work.
+Lets give windows and wsl 2.0 a try instead of switching between a dual boot system that we used to have in our college days.</p>
+<ol>
+<li>
+<p>I am still searching for a google windows setup guide for a development environment apart from Microsoft World.
+[Very Good Blog i found to customize WSL]
+(
+<a href=https://www.smashingmagazine.com/2019/09/moving-javascript-development-bash-windows/#top target=_blank rel=noopener>https://www.smashingmagazine.com/2019/09/moving-javascript-development-bash-windows/#top</a>)
+[Awesome WSL]
+(
+<a href=https://github.com/sirredbeard/Awesome-WSL#terminals target=_blank rel=noopener>https://github.com/sirredbeard/Awesome-WSL#terminals</a>)</p>
+</li>
+<li>
+<p>Terminal for windows.
+I am still waiting for Terminal 2.0 lets get the latest one from microsoft store.
+<a href=https://github.com/microsoft/terminal target=_blank rel=noopener>Terminal for Windows</a></p>
+</li>
+<li>
+<p>Terminal customization.
+I am big fan of shortcuts on terminal and utilities that make use of terminal piece of cake. List of URLs to read to customize the Windows Terminal as an alternative to iTerm2.</p>
+</li>
+</ol>
+<ul>
+<li>
+<a href=https://aka.ms/terminal-color-schemes target=_blank rel=noopener>https://aka.ms/terminal-color-schemes</a></li>
+<li>
+<a href=https://aka.ms/terminal-keybindings target=_blank rel=noopener>https://aka.ms/terminal-keybindings</a></li>
+<li>
+<a href=https://aka.ms/terminal-selection target=_blank rel=noopener>https://aka.ms/terminal-selection</a></li>
+<li>
+<a href=https://aka.ms/terminal-panes target=_blank rel=noopener>https://aka.ms/terminal-panes</a></li>
+</ul>
+<ol start=4>
+<li>SSH access from both WSL and windows at one place.</li>
+</ol>
+<ul>
+<li>
+<p>Add SSH keys in Username space in Windows and symlink it.
+<a href=https://docs.microsoft.com/en-us/windows/wsl/troubleshooting#correct-ssh-related-permission-errors target=_blank rel=noopener>https://docs.microsoft.com/en-us/windows/wsl/troubleshooting#correct-ssh-related-permission-errors</a></p>
+</li>
+<li>
+<p>Add SSH Config as per requirement:
+<a href=https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/ target=_blank rel=noopener>https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/</a>
+StrictHostKeyChecking no</p>
+</li>
+</ul>
+<p>OpenSSH-Client is installed by default in windows. ssh-agent service is disabled and so you can not use this service.
+I would recommended setting the service to automatic mode.
+Steps:</p>
+<ul>
+<li>Windows + R and search services.</li>
+<li>Search for: OpenSSH Authentication Agent.</li>
+<li>Edit it to startup type as automatic.</li>
+</ul>
+<p>While Windows people are making it more convenient to use all windows services accessible from WSL OpenSSH ssh-agent is still not one of them. Here is the fix to use it via WSL 2.
+<a href=https://github.com/rupor-github/wsl-ssh-agent#wsl-2-compatibility target=_blank rel=noopener>https://github.com/rupor-github/wsl-ssh-agent#wsl-2-compatibility</a></p>
+<ol start=5>
+<li>Ubuntu 20.04 customizations on WSL 2.0
+Some addition tools for ubuntu WSL 2.0:</li>
+</ol>
+<pre tabindex=0><code>sudo apt-get install fzf
+</code></pre><pre tabindex=0><code>sudo apt install net-tools (ifconfig)
+sudo apt install traceroute tcptraceroute
+</code></pre><ol start=6>
+<li>Kubernetes related configurations on ubuntu 20.04 WSL 2.0
+curl -LO
+<a href=https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/linux/amd64/kubectl target=_blank rel=noopener>https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/linux/amd64/kubectl</a></li>
+</ol>
+<p>
+<a href=https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/ target=_blank rel=noopener>https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/</a>
+<a href=https://krew.sigs.k8s.io/docs/user-guide/quickstart/ target=_blank rel=noopener>https://krew.sigs.k8s.io/docs/user-guide/quickstart/</a></p>
+<p>
+<a href=https://github.com/jonmosco/kube-ps1 target=_blank rel=noopener>https://github.com/jonmosco/kube-ps1</a></p>
+<pre tabindex=0><code>kubectl krew install ctx
+kubectl krew install ns
+</code></pre><ol start=7>
+<li>Docker for windows with access from WSL 2.0 and Windows Home support.</li>
+</ol>
+<ul>
+<li>
+<p>
+<a href=https://docs.docker.com/docker-for-windows/ target=_blank rel=noopener>https://docs.docker.com/docker-for-windows/</a></p>
+</li>
+<li>
+<p>
+<a href=https://www.docker.com/blog/docker-desktop-for-windows-home-is-here/ target=_blank rel=noopener>https://www.docker.com/blog/docker-desktop-for-windows-home-is-here/</a></p>
+</li>
+<li>
+<p>
+<a href=https://insider.windows.com/en-gb/welcome-insider/ target=_blank rel=noopener>You will need windows insider program for this to work</a></p>
+</li>
+</ul>
+<ol start=8>
+<li>Bridge between WSL2.0 and Windows.</li>
+</ol>
+<ul>
+<li>
+<p>File Storage
+<a href=https://www.tenforums.com/tutorials/127857-access-wsl-linux-files-windows-10-a.html target=_blank rel=noopener>https://www.tenforums.com/tutorials/127857-access-wsl-linux-files-windows-10-a.html</a></p>
+</li>
+<li>
+<p>Network Sockets
+<a href=https://github.com/jstarks/npiperelay target=_blank rel=noopener>https://github.com/jstarks/npiperelay</a>
+<a href=https://github.com/rupor-github/wsl-ssh-agent#wsl-2-compatibility target=_blank rel=noopener>https://github.com/rupor-github/wsl-ssh-agent#wsl-2-compatibility</a></p>
+</li>
+</ul>
+<ol start=9>
+<li>Issues with WSL 2 time.
+<a href=https://github.com/microsoft/WSL/issues/4245 target=_blank rel=noopener>https://github.com/microsoft/WSL/issues/4245</a>
+I noticed WSL 2 time was 5 min ahead on Windows time and aws cli tool was breaking for the same.
+Quick Fix:</li>
+</ol>
+<pre tabindex=0><code>sudo hwclock -s
+</code></pre><p>Sometimes if WSL is not responding a restart of WSL is needed.
+Restart all WSL using ADMIN powershell:</p>
+<pre tabindex=0><code>Get-Service LxssManager | Restart-Service
+</code></pre>
+</div>
+<footer>
+<p class=meta>
+<span class="byline author vcard">Posted by <span class=fn>Shaswat Gupta</span></span>
+<time>Jan 30, 2021</time>
+</span>
+</p>
+<p class=meta>
+<a class="basic-alignment right" href=https://github.com/shaswatgupta/tech/blog/2021-01-30-macbook-pro-setup/ title="Macbook Pro setup">Macbook Pro setup</a>
+</p>
+</footer>
+</article>
+</div>
+<aside class="sidebar thirds">
+<section class="first odd">
+<h1>Who am I</h1>
+<p>
+I am Shaswat, a Senior Site Reliability Engineer at <a href=https://careers.media.net/system-operations/site-reliability-engineer/>media.net</a>.
+I write about system design , reverse engineering,
+Go, automation, and (obviously) SRE.
+Click on <a href=/about/>About Me!</a> to know more.
+</p>
+</section>
+<ul class=sidebar-nav>
+<li class=sidebar-nav-item>
+<a target=_blank rel="noopener noreferrer" href=https://github.com/shaswatgupta/ title=https://github.com/shaswatgupta/><i class="fa fa-github fa-3x"></i></a>
+<a target=_blank rel="noopener noreferrer" href=https://twitter.com/shaswat770/ title=https://twitter.com/shaswat770/><i class="fa fa-twitter fa-3x"></i></a>
+</li>
+</ul>
+<section class=odd>
+<h1>Sidebar Links</h1>
+<li>
+<a href=https://github.com/shaswatgupta/tech/about title="About page">About page</a>
+</li>
+<li>
+<a href=https://github.com/shaswatgupta/tech/categories/sre/ title=SRE>SRE</a>
+</li>
+<li>
+<a href=https://github.com/shaswatgupta/tech/categories/windows/ title=Windows>Windows</a>
+</li>
+</section>
+<section class=even>
+<h1>Recent Posts</h1>
+<ul id=recent_posts>
+<li class=post>
+<a href=/shaswatgupta/tech/blog/2021-01-30-macbook-pro-setup/>Macbook Pro setup</a>
+</li>
+<li class=post>
+<a href=/shaswatgupta/tech/blog/2021-01-30-windows-10-laptop-setup-with-wsl-2.0./>Windows 10 Laptop setup with WSL 2.0.</a>
+</li>
+</ul>
+</section>
+</aside>
+</div>
+</div>
+<footer role=contentinfo>
+<p>Copyright &copy; 2021 Shaswat Gupta - <a href=https://github.com/license/>License</a> -
+<span class=credit>Powered by <a target=_blank href=https://gohugo.io rel="noopener noreferrer">Hugo</a> and <a target=_blank href=https://github.com/parsiya/hugo-octopress/ rel="noopener noreferrer">Hugo-Octopress</a> theme.
+</p>
+</footer>
+</body>
+</html>
