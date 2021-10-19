@@ -3,7 +3,7 @@ baseurl = "https://github.com/shaswatgupta/tech"
 disablePathToLower = false
 languageCode = "en-us"
 title = "Citadel"
-theme = "hugo-octopress"
+theme = "Hugo-Octopress"
 
 # Disqus shortcode
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
