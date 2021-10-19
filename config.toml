@@ -1,5 +1,5 @@
 
-baseurl = "http://localhost:1313/"
+baseurl = "https://github.com/shaswatgupta/tech"
 disablePathToLower = false
 languageCode = "en-us"
 title = "Citadel"
