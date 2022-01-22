@@ -1,5 +1,5 @@
 
-baseurl = "https://shaswatgupta.github.io/tech"
+baseurl = "https://shaswatgupta.github.io/tech/"
 disablePathToLower = false
 languageCode = "en-us"
 title = "Citadel"
